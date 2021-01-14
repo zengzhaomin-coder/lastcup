@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CORS 测试代码</title>
+    <script src="accets/axios.js"></script>
+    <style>
+        div table {
+            width: 500px;
+            height: 230px;
+            text-align: center;
+            margin-top: 40px;
+            margin-left: 30px;
+            border-collapse: collapse;
+        }
+        .aaa table {
+            border: 1px solid olivedrab;
+        }
+    </style>
+</head>
+<body>
+<p style="font-size: 20px;">杯子管理系统</p>
+<div class="aaa">
+    <table border="1" cellspacing="0" cellpadding="0">
+        <tr>
+            <th></th>
+            <th>编号</th>
+            <th>名字</th>
+            <th>价格</th>
+            <th>生产日期</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" value="" /></td>
+            <td>1</td>
+            <td>高脚杯</td>
+            <td>10.5</td>
+            <td>2020.10.25</td>
+            <td>删除按钮</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" value="" /></td>
+            <td>2</td>
+            <td>啤酒杯</td>
+            <td>10.8</td>
+            <td>2020.10.25</td>
+            <td>删除按钮</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" value="" /></td>
+            <td>3</td>
+            <td>茶水杯</td>
+            <td>103.5</td>
+            <td>2020.10.25</td>
+            <td>删除按钮</td>
+        </tr>
+    </table>
+    <button type="button" style="margin-top: 30px; margin-left: 30px;">反选</button>
+    <button type="button">全选</button>
+    <button type="button" style="margin-left: 200px;">删除所有选中</button>
+    <button type="button">其他</button>
+</div>
+    <script>
+        function loadCups() {
+            axios({
+                method: 'get',
+                url: 'http://localhost:8080/cup_war_exploded/list',
+                withCredentials: true
+            }).then((r) => {
+                alert("恭喜你，成功完成任务了");
+            }).catch(r => {
+                console.log(r);
+            });
+        }
+
+        // 调用跨域的方法
+        loadCups();
+    </script>
+</body>
+</html>
