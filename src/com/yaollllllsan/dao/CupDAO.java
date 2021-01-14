@@ -47,19 +47,23 @@ public class CupDAO {
      * @throws Exception
      */
     public void delSome(String[] ids) throws Exception {
-        Connection conn = DBHelper.getConnection();
-        String sql = "delete from cup where id in (";
-        for(int i = 0; i < ids.length; i++){
-            if (i == ids.length - 1){
-                sql += "?)";
-                break;
-            }
-            sql += "?,";
+        // 这种方法更简单
+        for (String id : ids) {
+            delCup(id);
         }
-        try {
-            new QueryRunner().update(conn, sql, ids);
-        } finally {
-            DbUtils.closeQuietly(conn);
-        }
-    }
+//         Connection conn = DBHelper.getConnection();
+//         String sql = "delete from cup where id in (";
+//         for(int i = 0; i < ids.length; i++){
+//             if (i == ids.length - 1){
+//                 sql += "?)";
+//                 break;
+//             }
+//             sql += "?,";
+//         }
+//         try {
+//             new QueryRunner().update(conn, sql, ids);
+//         } finally {
+//             DbUtils.closeQuietly(conn);
+//         }
+//     }
 }
